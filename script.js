@@ -154,7 +154,7 @@ function init() {
 
   const addNindoran = () => {
       const nidoran = {
-        id: `nidoran-${settings.nindorans.length + 1}`,
+        id: 32,
         x: 2860, y: 740,
         frameOffset: 1,
         animationTimer: null,
@@ -174,12 +174,18 @@ function init() {
       nidoran.sprite.el = nidoran.el.childNodes[0]
       nidoran.el.style.zIndex = nidoran.y
       setPos(nidoran)
+
+      const pokemon_Nidoran = document.querySelector('.nidoran');
+      pokemon_Nidoran.addEventListener("click", function() {
+        pokedexDisplay.innerHTML = `id:${nidoran.id}`;
+      });
+
       if (randomN(2) === 2) triggerNidoranWalk(nidoran)
     }
 
   const addCyndaquill = () => {
     const cyndaquill = {
-      id: `cyndaquill-${settings.cyndaquills.length + 1}`,
+      id: 155,
       x: 1280, y: 720,
       frameOffset: 1,
       animationTimer: null,
@@ -199,12 +205,18 @@ function init() {
     cyndaquill.sprite.el = cyndaquill.el.childNodes[0]
     cyndaquill.el.style.zIndex = cyndaquill.y
     setPos(cyndaquill)
+
+    const pokemon_Cyndaquill = document.querySelector('.cyndaquill');
+      pokemon_Cyndaquill.addEventListener("click", function() {
+        pokedexDisplay.innerHTML = `id:${cyndaquill.id}`;
+      });
+
     if (randomN2(2) === 2) triggerCyndaquillWalk(cyndaquill)
   }
 
   const addPsyduck = () => {
       const psyduck = {
-        id: `psyduck-${settings.psyducks.length + 1}`,
+        id: 54,
         x: 3360, y: 740,
         frameOffset: 1,
         animationTimer: null,
@@ -224,12 +236,18 @@ function init() {
       psyduck.sprite.el = psyduck.el.childNodes[0]
       psyduck.el.style.zIndex = psyduck.y
       setPos(psyduck)
+
+      const pokemon_Psyduck = document.querySelector('.psyduck');
+      pokemon_Psyduck.addEventListener("click", function() {
+        pokedexDisplay.innerHTML = `id:${psyduck.id}`;
+      });
+
       if (randomN3(2) === 2) triggerPsyduckWalk(psyduck)
     }
 
     const addOmanyte = () => {
       const omanyte = {
-        id: `omanyte-${settings.omanytes.length + 1}`,
+        id: 138,
         x: 720, y: 740,
         frameOffset: 1,
         animationTimer: null,
@@ -249,12 +267,18 @@ function init() {
       omanyte.sprite.el = omanyte.el.childNodes[0]
       omanyte.el.style.zIndex = omanyte.y
       setPos(omanyte)
+
+      const pokemon_Omanyte = document.querySelector('.omanyte');
+      pokemon_Omanyte.addEventListener("click", function() {
+        pokedexDisplay.innerHTML = `id:${omanyte.id}`;
+      });
+
       if (randomN3(2) === 2) triggerOmanyteWalk(omanyte)
     }
 
   const addSnorlax = () => {
     const snorlax = { 
-      id: `snorlax-${settings.elements.length + 1}`,
+      id: 143,
       x: 3880, y: 1740,
       el: Object.assign(document.createElement('div'), 
       { 
@@ -267,6 +291,12 @@ function init() {
     settings.elements.push(snorlax)
     snorlax.el.style.zIndex = 1
     setPos(snorlax)
+
+    const pokemon_Snorlax = document.querySelector('.snorlax');
+  
+    pokemon_Snorlax.addEventListener("click", function() {
+      pokedexDisplay.innerHTML = `id:${snorlax.id}`;
+    });
   }
 
   const addLapras = () => {
@@ -276,7 +306,7 @@ function init() {
       el: Object.assign(document.createElement('div'), 
       { 
         className: 'lapras',
-        innerHTML: '<div><div class="laprasTxt">da</div></div>' 
+        innerHTML: '<div></div>' 
       }),
       buffer: 80,
     }
@@ -285,8 +315,11 @@ function init() {
     lapras.el.style.zIndex = 1
     setPos(lapras)
 
-    const pokemonLapras = document.querySelector('.laprasTxt');
-    pokemonLapras.innerHTML = `id:${lapras.id}`;
+    const pokemon_Lapras = document.querySelector('.lapras');
+  
+    pokemon_Lapras.addEventListener("click", function() {
+      pokedexDisplay.innerHTML = `id:${lapras.id}`;
+    });
   }
 
   const setBackgroundPos = ({ el, x, y }) => {
