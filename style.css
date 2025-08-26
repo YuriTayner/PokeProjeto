@@ -1,0 +1,321 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+p, h1, h2, h3, h4 {
+  display: inline-block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+}
+
+body {
+  background-color: #9edae9;
+  font-family: Arial, Helvetica, sans-serif;
+  overscroll-behavior: contain;
+}
+
+.pokedexDisplay{
+  position: fixed;
+  width: 380px;
+  height: 380px;
+  z-index: 99999;
+  background-color: rgba(0, 0, 0, 0.3);  
+  border-radius: 4px; 
+  border: solid black 2px;
+  pointer-events: all;
+}
+
+.pokedexDisplay button{ 
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  margin: 0 auto;
+  border-radius: 4px; 
+  border: solid black 2px;
+  cursor: pointer;
+  z-index:auto;
+  background-color: lightblue;
+}
+
+.pokedexDisplay button:hover{
+  background-color: #fff;
+}
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.circle {
+  position: relative;
+  border-radius: 50%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.d-none {
+  display: none;
+}
+
+.pokemon{
+  width: 200px;
+  height: 100px;
+  border: black 3px solid;  
+}
+
+.cyndaquill {
+  pointer-events: none;
+}
+
+.cyndaquill::after {
+  background-image: url(img/spriteCyndaquill2.png);
+  transform: scale(2.7, 1.8);
+}
+
+.nidoran {
+  pointer-events: none;
+}
+
+.nidoran::after {
+  background-image: url(img/spriteNidoran.png);
+  transform: scale(1.7, 1.1);
+}
+
+.psyduck {
+  pointer-events: none;
+}
+
+.psyduck::after {
+  background-image: url(img/spritePsyduck2.png);
+  transform: scale(1.9, 1.5);
+}
+
+.omanyte {
+  pointer-events: none;
+}
+
+.omanyte::after {
+  background-image: url(img/spriteOmanyte.png);
+  transform: scale(2.4, 1.5);
+}
+
+@keyframes display {
+  0% {
+    transform: translateY(0);
+  }
+  90% {
+    transform: translateY(-30px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes top-up {
+  0% {
+    width: 0;
+    background-color: #8a8a8a;
+  }
+  100% {
+    width: calc(24px * var(--m));
+    background-color: #36e9ce;
+  }
+}
+
+.red::after {
+  background-image: url(img/spriteRed3.png);
+  scale:1.7;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sprite-container {
+  position: absolute;
+  --w: 20px;
+  --h: 32px;
+  --m: 2;
+  width: 0;
+  height: 0;
+  z-index: 1;
+}
+
+
+.sprite  {
+  position: absolute;
+  --x: 3; /* grid */
+  --y: 4;
+  top: calc(-1 * var(--w));
+  left: calc(-1 * var(--w));
+  --width: calc(var(--w) * var(--m));
+  --height: calc(var(--h) * var(--m));
+  width: var(--width);
+  height: var(--width);
+}
+
+.sprite::after {
+  position: absolute;
+  bottom: 0;
+  content: '';
+  width: var(--width);
+  height: var(--height);
+  background-size: calc(var(--width) * var(--x)) calc(var(--height) * var(--y));
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  background-position: var(--bx) var(--by);
+}
+
+.map-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+  image-rendering: pixelated;
+}
+
+.map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.4s;
+  background-color: #b7e3ee;
+  background-image: url(img/fuchsia.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.map.slow-transition {
+  transition: 1.8s;
+}
+
+.map.transition {
+  transition: 0s;
+}
+
+.player-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.snorlax{
+ position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.snorlax > div{
+  position: absolute;
+  --w: 100px;
+  --h: 100px;
+  --m: 3;
+  --width: calc(var(--w) * var(--m));
+  --height: calc(var(--h) * var(--m));
+  width: var(--width);
+  height: var(--width);
+  left: calc((var(--m) / -2) * var(--w));
+  top: calc((var(--m) / -2) * var(--w));
+}
+
+.snorlax > div::after{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  background-image: url(img/spriteSnorlax.png);
+  width: var(--width);
+  height: var(--height);
+  background-size: var(--width) var(--height); 
+}
+
+.lapras{
+ position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.lapras > div{
+  position: absolute;
+  --w: 80px;
+  --h: 80px;
+  --m: 3;
+  --width: calc(var(--w) * var(--m));
+  --height: calc(var(--h) * var(--m));
+  width: var(--width);
+  height: var(--width);
+  left: calc((var(--m) / -2) * var(--w));
+  top: calc((var(--m) / -2) * var(--w));
+}
+
+.lapras > div::after{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  background-image: url(img/spriteLapras.png);
+  width: var(--width);
+  height: var(--height);
+  background-size: var(--width) var(--height); 
+}
+
+.laprasTxt{
+  position: absolute;
+  width: 120px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.3); 
+  pointer-events: none; 
+  border-radius: 4px; 
+  border: solid black 2px;
+  transform: translate(-50%, -50%); 
+  text-align: center;
+  left: 120px;
+}
+
+.position-update{
+  position: absolute;
+  width: 70px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.3); 
+  pointer-events: none; 
+  border-radius: 4px; 
+  border: solid black 2px;
+  transform: translate(-50%, -50%); 
+  bottom: 10px;
+}
+
+.wall{
+  position: absolute;
+  content: '';
+  bottom: 0;
+}
