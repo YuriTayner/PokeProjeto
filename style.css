@@ -24,8 +24,8 @@ body {
 .pokedexDisplay{
   position: fixed;
   margin: 1%;
-  width: 18%;
-  height: 35%;
+  width: 30%;
+  height: auto;
   z-index: 99999;
   background-color: rgba(0, 0, 0, 0.3);  
   border-radius: 4px; 
@@ -33,6 +33,26 @@ body {
   pointer-events: all;
 }
 
+.pokedexDisplay img{
+  width: 100%
+}
+
+.pokedexId{
+  position: fixed;
+  width: 200px;
+  height: 60px;
+  z-index: 100000;
+  border: #36e9ce solid 1px;
+}
+
+.pokedexImg{
+  position: absolute;
+  top: 200px;
+  width: 50%;
+  height: 50px;
+  z-index: 100000;
+  border: aliceblue 1px solid;
+}
 
 
 .wrapper {

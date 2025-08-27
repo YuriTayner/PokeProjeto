@@ -61,6 +61,9 @@ function init() {
     sadBunnies: []
   }
 
+  const pokedexId = document.querySelector('.pokedexId')
+  const pokedexImg = document.querySelector('.pokedexImg')
+
   const fetchPokemon = async (pokemon) => {
     const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
     
@@ -68,6 +71,13 @@ function init() {
         const data = await APIResponse.json();
         return data;
     }
+}
+
+const renderPokemon = async (pokemon) => {
+  const data = await fetchPokemon(pokemon);
+
+  pokedexId.innerHTML = data.name;
+  pokedexImg.src = data['sprites']['versions']['generation-iii']['firered-leafgreen']['front_default'];
 }
 
 
@@ -177,7 +187,7 @@ function init() {
 
       const pokemon_Nidoran = document.querySelector('.nidoran');
       pokemon_Nidoran.addEventListener("click", function() {
-        pokedexDisplay.innerHTML = `id:${nidoran.id}`;
+        pokedexId.innerHTML = `id:${nidoran.id}`;
       });
 
       if (randomN(2) === 2) triggerNidoranWalk(nidoran)
@@ -208,7 +218,7 @@ function init() {
 
     const pokemon_Cyndaquill = document.querySelector('.cyndaquill');
       pokemon_Cyndaquill.addEventListener("click", function() {
-        pokedexDisplay.innerHTML = `id:${cyndaquill.id}`;
+        pokedexId.innerHTML = `id:${cyndaquill.id}`;
       });
 
     if (randomN2(2) === 2) triggerCyndaquillWalk(cyndaquill)
@@ -239,7 +249,7 @@ function init() {
 
       const pokemon_Psyduck = document.querySelector('.psyduck');
       pokemon_Psyduck.addEventListener("click", function() {
-        pokedexDisplay.innerHTML = `id:${psyduck.id}`;
+        pokedexId.innerHTML = `id:${psyduck.id}`;
       });
 
       if (randomN3(2) === 2) triggerPsyduckWalk(psyduck)
@@ -270,7 +280,7 @@ function init() {
 
       const pokemon_Omanyte = document.querySelector('.omanyte');
       pokemon_Omanyte.addEventListener("click", function() {
-        pokedexDisplay.innerHTML = `id:${omanyte.id}`;
+        pokedexId.innerHTML = `id:${omanyte.id}`;
       });
 
       if (randomN3(2) === 2) triggerOmanyteWalk(omanyte)
@@ -295,7 +305,7 @@ function init() {
     const pokemon_Snorlax = document.querySelector('.snorlax');
   
     pokemon_Snorlax.addEventListener("click", function() {
-      pokedexDisplay.innerHTML = `id:${snorlax.id}`;
+      pokedexId.innerHTML = `id:${snorlax.id}`;
     });
   }
 
@@ -317,8 +327,8 @@ function init() {
 
     const pokemon_Lapras = document.querySelector('.lapras');
   
-    pokemon_Lapras.addEventListener("click", function() {
-      pokedexDisplay.innerHTML = `id:${lapras.id}`;
+    pokemon_Lapras.addEventListener("click", function(){
+      renderPokemon(lapras.id);
     });
   }
 
